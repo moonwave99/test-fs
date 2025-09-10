@@ -1,7 +1,10 @@
 {
   "name": "@moonwave99/test-fs",
   "description": "A tiny filesystem helper test library.",
-  "repository": "https://github.com/moonwave99/test-fs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonwave99/test-fs.git"
+  },
   "homepage": "https://moonwave99.github.io/test-fs",
   "author": {
     "name": "Diego Caponera",
