@@ -5,6 +5,12 @@ A tiny filesystem helper test library that creates actual files.
 - it does not mock / interfere with existing modules;
 - it just creates plain text files for tree structure test purposes.
 
+## Install
+
+```txt
+npm install @moonwave99/test-fs -D
+```
+
 ## Docs
 
 ### `testFs(tree: Tree = {}, context: string = ")`
