@@ -64,13 +64,15 @@ const rootDir = await testFs({
 await testFsCleanup('your-context-id');
 ```
 
-You want to use them in your test suites like:
+Add the following to your main test configuration (e.g. `vitest.setup.ts` or similar):
 
 ```js
-beforeEach(async () => {
-  await testFsCleanup();
+// get a fresh tmp context every time
+beforeEach(async (context) => {
+  await testFsCleanup(context.task.id);
 });
 
+// clean the whole tmp folder after done
 afterAll(async () => {
   await testFsCleanup();
 });

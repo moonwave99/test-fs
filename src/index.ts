@@ -26,7 +26,7 @@ async function createTree(tree: Tree, rootDir: string): Promise<unknown> {
 }
 
 export async function testFs(tree: Tree = {}, context: string = "") {
-  const directory = path.join(__dirname, TMP_DIR, sanitize(context));
+  const directory = path.join(import.meta.dirname, TMP_DIR, sanitize(context));
   if (isEmpty(tree)) {
     return directory;
   }
@@ -36,5 +36,5 @@ export async function testFs(tree: Tree = {}, context: string = "") {
 }
 
 export async function testFsCleanup(context = "") {
-  return remove(sanitize(path.join(__dirname, TMP_DIR, context)));
+  return remove(sanitize(path.join(import.meta.dirname, TMP_DIR, context)));
 }

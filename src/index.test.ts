@@ -82,7 +82,9 @@ describe("testFs", () => {
       "../malicious"
     );
     expect(rootDir.endsWith("src/__test-fs__/malicious")).toBe(true);
-    expect(await exists(path.resolve(__dirname, "../malicious"))).toBe(false);
+    expect(
+      await exists(path.resolve(import.meta.dirname, "../malicious"))
+    ).toBe(false);
     expect(await exists(path.join(rootDir, "up"), "directory")).toBe(true);
     expect(await exists(path.join(rootDir, "up", "file.txt"), "file")).toBe(
       true
