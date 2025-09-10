@@ -1,5 +1,5 @@
 {
-  "name": "test-fs",
+  "name": "@moonwave99/test-fs",
   "description": "A tiny filesystem helper test library.",
   "repository": "https://github.com/moonwave99/test-fs",
   "homepage": "https://moonwave99.github.io/test-fs",
