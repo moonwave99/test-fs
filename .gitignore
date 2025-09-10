@@ -1,0 +1,18 @@
+.cache/
+coverage/
+node_modules/
+*.log
+e2e/**/dist
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# library related files
+dist
+__test-fs__
