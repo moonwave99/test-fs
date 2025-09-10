@@ -1,5 +1,7 @@
 # test-fs
 
+[![Build Status](https://github.com/moonwave99/test-fs/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/moonwave99/test-fs/actions?workflow=Test)
+
 A tiny filesystem helper test library that creates actual files.
 
 - it does not mock / interfere with existing modules;
