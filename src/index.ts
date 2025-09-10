@@ -1,4 +1,4 @@
-import path from "node:path";
+import path, { sep } from "node:path";
 import { ensureDir, outputFile, remove } from "fs-extra";
 
 const TMP_DIR = "__test-fs__";
@@ -10,7 +10,7 @@ function isEmpty(tree: Tree) {
 }
 
 function sanitize(path: string) {
-  return path.replaceAll("../", "");
+  return path.replaceAll(`..${sep}`, "");
 }
 
 async function createTree(tree: Tree, rootDir: string): Promise<unknown> {

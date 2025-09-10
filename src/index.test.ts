@@ -25,7 +25,7 @@ async function exists(file: string, type: "directory" | "file" = "directory") {
 }
 
 const tree = {
-  "some/inline/file.txt": "some content",
+  [path.join("some", "inline", "file.txt")]: "some content",
   emptyFolder: {},
   folder: {
     nested: {
@@ -38,10 +38,10 @@ const tree = {
 const treeMap = [
   ["folder", "directory"],
   ["emptyFolder", "directory"],
-  ["folder/file.txt", "file"],
-  ["folder/nested", "directory"],
-  ["folder/nested/file.txt", "file"],
-  ["some/inline/file.txt", "file"],
+  [path.join("folder", "file.txt"), "file"],
+  [path.join("folder", "nested"), "directory"],
+  [path.join("folder", "nested", "file.txt"), "file"],
+  [path.join("some", "inline", "file.txt"), "file"],
 ];
 
 describe("testFs", () => {
@@ -79,15 +79,17 @@ describe("testFs", () => {
   it("sanitizes the input", async () => {
     const rootDir = await testFs(
       {
-        "../up": {
-          "../file.txt": "some content",
+        [path.join("..", "up")]: {
+          [path.join("..", "file.txt")]: "some content",
         },
       },
-      "../malicious"
+      path.join("..", "malicious")
     );
-    expect(rootDir.endsWith("src/__test-fs__/malicious")).toBe(true);
+    expect(rootDir.endsWith(path.join("src", "__test-fs__", "malicious"))).toBe(
+      true
+    );
     expect(
-      await exists(path.resolve(import.meta.dirname, "../malicious"))
+      await exists(path.resolve(import.meta.dirname, "..", "malicious"))
     ).toBe(false);
     expect(await exists(path.join(rootDir, "up"), "directory")).toBe(true);
     expect(await exists(path.join(rootDir, "up", "file.txt"), "file")).toBe(
