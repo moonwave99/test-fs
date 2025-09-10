@@ -20,9 +20,9 @@ const rootDir = await testFs({
   folder: {
     empty: {}, // empty folder
     nested: {
-      "file.txt": "",
+      "file.txt": "some content",
     },
-    "file.txt": "",
+    "file.txt": "some content",
   },
 });
 ```
@@ -96,7 +96,7 @@ describe("uploadAvatar", () => {
     );
 
     await uploadAvatar("my-picture.jpg");
-    const uploadedPath = path.join(avatarFolder, "my-picture.jpg");
+    const uploadedPath = path.join(avatarFolder, "avatars", "my-picture.jpg");
     expect(await pathExists(uploadedPath)).toBe(true);
   });
 
@@ -109,7 +109,7 @@ describe("uploadAvatar", () => {
     );
 
     await uploadAvatar("not-found.jpg");
-    const uploadedPath = path.join(avatarFolder, "not-found.jpg");
+    const uploadedPath = path.join(avatarFolder, "avatars", "not-found.jpg");
     expect(await pathExists(uploadedPath)).toBe(false);
   });
 });
