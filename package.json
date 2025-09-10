@@ -46,6 +46,9 @@
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
+  },
   "dependencies": {
     "fs-extra": "^11.3.1"
   }
