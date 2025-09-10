@@ -19,9 +19,9 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "eslint --ext .ts src",
-    "test": "vitest run",
-    "test:watch": "vitest --maxWorkers=1",
-    "test:coverage": "vitest run --coverage --maxWorkers=1"
+    "test": "npx vitest run",
+    "test:watch": "npx vitest --maxWorkers=1",
+    "test:coverage": "npx vitest run --coverage --maxWorkers=1"
   },
   "keywords": [
     "fs",
