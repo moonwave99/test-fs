@@ -17,12 +17,12 @@ Creates the passed tree in the tmp folder. If a `context` value is passed, it cr
 import { testFs } from "test-fs";
 
 const rootDir = await testFs({
+  emptyFolder: {},
   folder: {
-    empty: {}, // empty folder
     nested: {
       "file.txt": "some content",
     },
-    "file.txt": "some content",
+    "empty-file.txt": "",
   },
 });
 ```
@@ -31,12 +31,32 @@ It creates:
 
 ```txt
 {rootDir}
+  emptyFolder
   folder
-    empty
     nested
       file.txt
-    file.txt
+    empty-file.txt
+```
 
+You can also pass complete paths as values:
+
+```js
+import { testFs } from "test-fs";
+
+const rootDir = await testFs({
+  "path/to/file-1.txt": "",
+  "path/to/file-2.txt": "",
+});
+```
+
+It creates:
+
+```txt
+{rootDir}
+  path
+    to
+      file-1.txt
+      file-2.txt
 ```
 
 ### `testFsCleanup(context: string = ")`
@@ -48,20 +68,22 @@ Be sure to know what you are passing!
 ```js
 import { testFs, testFsCleanup } from "test-fs";
 
-const rootDir = await testFs({
-  folder: {
-    empty: {}, // empty folder
-    nested: {
-      "file.txt": "some content",
+const rootDir = await testFs(
+  {
+    emptyFolder: {},
+    folder: {
+      nested: {
+        "file.txt": "some content",
+      },
+      "empty-file.txt": "",
     },
-    "file.txt": "some content",
   },
-  'your-context-id'
-});
+  "your-context-id"
+);
 
 // some operations
 
-await testFsCleanup('your-context-id');
+await testFsCleanup("your-context-id");
 ```
 
 Add the following to your main test configuration (e.g. `vitest.setup.ts` or similar):

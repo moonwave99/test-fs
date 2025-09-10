@@ -25,6 +25,8 @@ async function exists(file: string, type: "directory" | "file" = "directory") {
 }
 
 const tree = {
+  "some/inline/file.txt": "some content",
+  emptyFolder: {},
   folder: {
     nested: {
       "file.txt": "some content",
@@ -35,9 +37,11 @@ const tree = {
 
 const treeMap = [
   ["folder", "directory"],
+  ["emptyFolder", "directory"],
   ["folder/file.txt", "file"],
   ["folder/nested", "directory"],
   ["folder/nested/file.txt", "file"],
+  ["some/inline/file.txt", "file"],
 ];
 
 describe("testFs", () => {

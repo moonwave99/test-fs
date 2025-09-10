@@ -8,7 +8,7 @@
     "email": "hello@diegocaponera.com",
     "url": "https://www.diegocaponera.com"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

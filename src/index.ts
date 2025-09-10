@@ -14,8 +14,9 @@ function sanitize(path: string) {
 }
 
 async function createTree(tree: Tree, rootDir: string): Promise<unknown> {
+  await ensureDir(rootDir);
   return Promise.all(
-    Object.entries(tree).map(([key, value]): Promise<unknown> => {
+    Object.entries(tree).map(async ([key, value]): Promise<unknown> => {
       const targetPath = path.join(rootDir, sanitize(key));
       if (typeof value === "string") {
         return outputFile(targetPath, value, "utf8");
