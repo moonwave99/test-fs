@@ -108,14 +108,10 @@ Add the following to your main test configuration (e.g. `vitest.setup.ts` or sim
 
 ```js
 // get a fresh tmp context every time
-beforeEach(async (context) => {
-  await testFsCleanup(context.task.id);
-});
+beforeEach( (context) => testFsCleanup(context.task.id));
 
 // clean the whole tmp folder after done
-afterAll(async () => {
-  await testFsCleanup();
-});
+afterAll(() => testFsCleanup());
 ```
 
 ---
