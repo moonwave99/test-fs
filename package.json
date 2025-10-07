@@ -25,7 +25,7 @@
     "test": "npx vitest run",
     "test:watch": "npx vitest --maxWorkers=1",
     "test:coverage": "npx vitest run --coverage --maxWorkers=1",
-    "build:site": "rm -rf site && npx readme.com --buildPath site"
+    "build:site": "rm -rf site && npx readme.com --distPath site"
   },
   "keywords": [
     "fs",
