@@ -17,7 +17,7 @@ npm install @moonwave99/test-fs -D
 
 ---
 
-## Example
+## Examples
 
 [See on Stackblitz](https://stackblitz.com/edit/stackblitz-starters-e81mhry3?file=README.md)
 
@@ -32,7 +32,7 @@ Creates the passed tree in the tmp folder. If a `context` value is passed, it cr
 **Note:** object values are folders, strings are files. Object keys are names.
 
 ```js
-import { testFs } from "test-fs";
+import { testFs } from "@moonwave99/test-fs";
 
 const rootDir = await testFs({
   emptyFolder: {},
@@ -59,7 +59,7 @@ It creates:
 You can also pass complete paths as values:
 
 ```js
-import { testFs } from "test-fs";
+import { testFs } from ""@moonwave99/test-fs";
 
 const rootDir = await testFs({
   "path/to/file-1.txt": "",
@@ -84,7 +84,7 @@ Cleans the passed directory. If `context` is passed, it cleans the `{context}` s
 Be sure to know what you are passing!
 
 ```js
-import { testFs, testFsCleanup } from "test-fs";
+import { testFs, testFsCleanup } from ""@moonwave99/test-fs";
 
 const rootDir = await testFs(
   {
@@ -123,34 +123,43 @@ I faced some issues with the in-memory/mock libraries, so I decided to sacrifice
 Since test runners like Jest expose an unique `context.task.id` value, it's easy to create independent temporary folders where to check for the expected output, for instance:
 
 ```js
-// use whichever test method you like
-import { pathExists } from "fs-extra";
+describe('saveNote function', () => {
+  it('saves a note for the corresponding user', async (context) => {
+    // creates an empty folder
+    const dataFolder = await testFs({}, context.id);
 
-describe("uploadAvatar", () => {
-  it("uploads the passed avatar", async (context) => {
-    const avatarFolder = await testFs(
-      {
-        avatars: {},
-      },
-      context.task.id
-    );
+    const noteId = await saveNote({
+      userId: 1,
+      content: 'Some text',
+      dataFolder,
+    });
 
-    await uploadAvatar("my-picture.jpg");
-    const uploadedPath = path.join(avatarFolder, "avatars", "my-picture.jpg");
-    expect(await pathExists(uploadedPath)).toBe(true);
+    const outputPath = path.join(dataFolder, '1', `note-${noteId}.txt`);
+
+    expect(await fs.exists(outputPath)).toBe(true);
+    expect(await fs.readFile(outputPath, 'utf8')).toBe('Some text');
   });
+});
 
-  it("does nothing if no avatar is found", async (context) => {
-    const avatarFolder = await testFs(
+describe('readNote function', () => {
+  it('reads the contents for the corresponding note', async (context) => {
+    // it populates the folder with some content, without needing call saveNote first
+    const dataFolder = await testFs(
       {
-        avatars: {},
+        1: {
+          'note-123.txt': 'Some content',
+        },
       },
-      context.task.id
+      context.id
     );
 
-    await uploadAvatar("not-found.jpg");
-    const uploadedPath = path.join(avatarFolder, "avatars", "not-found.jpg");
-    expect(await pathExists(uploadedPath)).toBe(false);
+    const contents = await readNote({
+      userId: 1,
+      noteId: 123,
+      dataFolder,
+    });
+
+    expect(contents).toBe('Some content');
   });
 });
 ```
