@@ -7,11 +7,15 @@ A tiny filesystem helper test library that creates actual files.
 - it does not mock / interfere with existing modules;
 - it just creates plain text files for tree structure test purposes.
 
+---
+
 ## Install
 
 ```txt
 npm install @moonwave99/test-fs -D
 ```
+
+---
 
 ## Docs
 
@@ -108,6 +112,8 @@ afterAll(async () => {
 });
 ```
 
+---
+
 ## Rationale
 
 I faced some issues with the in-memory/mock libraries, so I decided to sacrifice a little performance in order to work with **actual files and folders**.
@@ -147,7 +153,9 @@ describe("uploadAvatar", () => {
 });
 ```
 
-The tests can safely run in parallel
+The tests can thus safely run in parallel.
+
+---
 
 ## License
 

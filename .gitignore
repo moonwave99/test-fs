@@ -16,3 +16,6 @@ Thumbs.db
 # library related files
 dist
 __test-fs__
+
+# Docs page
+site
