@@ -17,6 +17,12 @@ npm install @moonwave99/test-fs -D
 
 ---
 
+## Example
+
+[See on Stackblitz](https://stackblitz.com/edit/stackblitz-starters-e81mhry3?file=README.md)
+
+---
+
 ## Docs
 
 ### `testFs(tree: Tree = {}, context: string = ")`
