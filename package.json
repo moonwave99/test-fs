@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/moonwave99/test-fs.git"
   },
-  "homepage": "https://moonwave99.github.io/test-fs",
+  "homepage": "https://github.com/moonwave99/test-fs",
   "author": {
     "name": "Diego Caponera",
     "email": "hello@diegocaponera.com",
@@ -25,6 +25,7 @@
     "test": "npx vitest run",
     "test:watch": "npx vitest --maxWorkers=1",
     "test:coverage": "npx vitest run --coverage --maxWorkers=1",
+    "dev:site": "npx concurrently 'npx serve site' 'npx nodemon --watch readme.md --exec npm run build:site'",
     "build:site": "rm -rf site && npx readme.com --distPath site"
   },
   "keywords": [
