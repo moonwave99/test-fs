@@ -59,7 +59,7 @@ It creates:
 You can also pass complete paths as values:
 
 ```js
-import { testFs } from ""@moonwave99/test-fs";
+import { testFs } from "@moonwave99/test-fs";
 
 const rootDir = await testFs({
   "path/to/file-1.txt": "",
@@ -84,7 +84,7 @@ Cleans the passed directory. If `context` is passed, it cleans the `{context}` s
 Be sure to know what you are passing!
 
 ```js
-import { testFs, testFsCleanup } from ""@moonwave99/test-fs";
+import { testFs, testFsCleanup } from "@moonwave99/test-fs";
 
 const rootDir = await testFs(
   {
