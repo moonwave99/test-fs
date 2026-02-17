@@ -1,7 +1,7 @@
 import { beforeEach, afterAll, describe, it, expect } from "vitest";
 import path from "node:path";
 import fs from "fs-extra";
-import { testFs, testFsCleanup } from "../src";
+import { testFs, testFsCleanup } from "@moonwave99/test-fs";
 
 import { saveNote, readNote } from "./";
 

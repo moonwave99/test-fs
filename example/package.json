@@ -4,6 +4,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@moonwave99/test-fs": "^0.0.5",
     "fs-extra": "^11.3.2",
     "nanoid": "^5.1.6",
     "vitest": "^3.2.4"
