@@ -8,5 +8,6 @@ export default defineConfig({
       provider: "istanbul",
       include: ["src/"],
     },
+    exclude: ["node_modules", "example"],
   },
 });
