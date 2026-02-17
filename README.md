@@ -19,7 +19,7 @@ npm install @moonwave99/test-fs -D
 
 ## Examples
 
-[See on Stackblitz](https://stackblitz.com/edit/stackblitz-starters-e81mhry3?file=README.md)
+[See on Stackblitz](https://stackblitz.com/github/moonwave99/test-fs/tree/main/example?file=README.md)
 
 ---
 
@@ -96,7 +96,7 @@ const rootDir = await testFs(
       "empty-file.txt": "",
     },
   },
-  "your-context-id"
+  "your-context-id",
 );
 
 // some operations
@@ -108,7 +108,7 @@ Add the following to your main test configuration (e.g. `vitest.setup.ts` or sim
 
 ```js
 // get a fresh tmp context every time
-beforeEach( (context) => testFsCleanup(context.task.id));
+beforeEach((context) => testFsCleanup(context.task.id));
 
 // clean the whole tmp folder after done
 afterAll(() => testFsCleanup());
@@ -123,34 +123,34 @@ I faced some issues with the in-memory/mock libraries, so I decided to sacrifice
 Since test runners like Jest expose an unique `context.task.id` value, it's easy to create independent temporary folders where to check for the expected output, for instance:
 
 ```js
-describe('saveNote function', () => {
-  it('saves a note for the corresponding user', async (context) => {
+describe("saveNote function", () => {
+  it("saves a note for the corresponding user", async (context) => {
     // creates an empty folder
     const dataFolder = await testFs({}, context.id);
 
     const noteId = await saveNote({
       userId: 1,
-      content: 'Some text',
+      content: "Some text",
       dataFolder,
     });
 
-    const outputPath = path.join(dataFolder, '1', `note-${noteId}.txt`);
+    const outputPath = path.join(dataFolder, "1", `note-${noteId}.txt`);
 
     expect(await fs.exists(outputPath)).toBe(true);
-    expect(await fs.readFile(outputPath, 'utf8')).toBe('Some text');
+    expect(await fs.readFile(outputPath, "utf8")).toBe("Some text");
   });
 });
 
-describe('readNote function', () => {
-  it('reads the contents for the corresponding note', async (context) => {
+describe("readNote function", () => {
+  it("reads the contents for the corresponding note", async (context) => {
     // it populates the folder with some content, without needing call saveNote first
     const dataFolder = await testFs(
       {
         1: {
-          'note-123.txt': 'Some content',
+          "note-123.txt": "Some content",
         },
       },
-      context.id
+      context.id,
     );
 
     const contents = await readNote({
@@ -159,7 +159,7 @@ describe('readNote function', () => {
       dataFolder,
     });
 
-    expect(contents).toBe('Some content');
+    expect(contents).toBe("Some content");
   });
 });
 ```
