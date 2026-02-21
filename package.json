@@ -19,14 +19,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsdown",
+    "dev": "tsdown",
     "lint": "eslint --ext .ts src",
-    "test": "npx vitest run",
-    "test:watch": "npx vitest --maxWorkers=1",
-    "test:coverage": "npx vitest run --coverage --maxWorkers=1",
-    "dev:site": "npx concurrently 'npx serve site' 'npx nodemon --watch readme.md --exec npm run build:site'",
-    "build:site": "rm -rf site && npx readme.com@latest --distPath site"
+    "test": "vitest run",
+    "test:watch": "vitest --maxWorkers=1",
+    "test:coverage": "vitest run --coverage --maxWorkers=1",
+    "dev:site": "pnpx concurrently 'pnpx serve site' 'pnpx nodemon --watch readme.md --exec pnpm build:site'",
+    "build:site": "rm -rf site && pnpx readme.com@latest --outputPath site"
   },
   "keywords": [
     "fs",
@@ -47,7 +47,7 @@
     "@vitest/coverage-istanbul": "^3.2.4",
     "eslint": "^9.35.0",
     "globals": "^16.4.0",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
